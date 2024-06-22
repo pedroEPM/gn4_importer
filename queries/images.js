@@ -8,6 +8,7 @@ export const add = async(body) => {
             content: body.content,
             authors: body.authors,
             credit: body.credit,
+            type: body.type,
         });
 
         await newImage.save()

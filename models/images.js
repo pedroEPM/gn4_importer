@@ -18,6 +18,9 @@ const Imageschema = new mongoose.Schema({
     authors: {
         type: String,
     },
+    type: {
+        type: String
+    }
 });
 
 const Image = mongoose.model('Image', Imageschema);

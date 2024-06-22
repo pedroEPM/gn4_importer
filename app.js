@@ -4,7 +4,6 @@ import express from 'express';
 import cors  from 'cors';
 import logger  from 'morgan';
 
-
 import notes from './routes/notes.js'
 import pdfs from './routes/pdfs.js'
 import images from './routes/images.js'
@@ -27,3 +26,4 @@ const port = process.env.PORT ?? 5001;
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
 });
+
