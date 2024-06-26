@@ -9,6 +9,9 @@ import pdfs from './routes/pdfs.js'
 import images from './routes/images.js'
 
 const app = express();
+
+
+
  
 app.use(express.json());
 app.use(logger('dev'))

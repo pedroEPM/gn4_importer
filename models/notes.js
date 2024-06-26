@@ -20,7 +20,11 @@ const Noteschema = new mongoose.Schema({
     },
     credit: {
         type: String,
-    }
+    },
+    images: {
+        type: [Number],
+        default: []
+    },
 });
 
 const Notes = mongoose.model('Note', Noteschema);

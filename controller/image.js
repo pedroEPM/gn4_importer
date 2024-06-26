@@ -9,9 +9,6 @@ export const setNewImage = async() => {
     try {
 
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('image_'));
-        console.log(files.length)
- 
-        const oneFile = [files[220]]
         for(const file of files) {
             const { image: imageData } = await readerXML(folder + '/' + file);
             const body = {};
@@ -29,12 +26,11 @@ export const setNewImage = async() => {
             } else {
                 body.type = '.jpg';
             }
-
+ 
             await add(body);
             await fs.promises.rename(folder + '/' + file, folder + '/imagesReaded/' + file);
 
         }
-
 
         console.log('- All images are upadated -')
         

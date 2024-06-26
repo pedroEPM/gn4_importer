@@ -12,6 +12,8 @@ export const setNewNote = async() => {
             const { story: noteData } = await readerXML(folder + '/' + file);
             const bodyContent = await parseXML(folder + '/' + file, 'xmlText')
             const body = {};
+            const images = [];
+
 
             body.XMLID = file.trim().toLowerCase().replace('.xml', '').replace('story_', '');
             if(noteData[0]?.title) body.title = noteData[0]?.title[0];
@@ -19,7 +21,13 @@ export const setNewNote = async() => {
             if(noteData[0]?.authors) body.authors = noteData[0]?.authors[0];
             if(noteData[0]?.credit) body.credit = noteData[0]?.credit[0];
             body.htmlContent = bodyContent;
-            
+            if(noteData[0]?.objs) {
+                noteData[0]?.objs[0]?.image?.forEach(element => {
+                    images.push(+element['$'].id)
+                });
+            }
+            body.images = images;
+          
             await add(body);
             await fs.promises.rename(folder + '/' + file, folder + '/notesReaded/' + file);
         }

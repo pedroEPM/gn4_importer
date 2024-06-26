@@ -21,7 +21,7 @@ export const readXML = async () => {
             // }
 
             if(customName.includes('_thumb')) await fs.promises.rename(folder + '/' + file, folder + '/thumbnails/' + file);
-            if(customName.includes('.pdf')) await fs.promises.rename(folder + '/' + file, folder + '/pdfs/' + file);
+            // if(customName.includes('.pdf')) await fs.promises.rename(folder + '/' + file, folder + '/pdfs/' + file);
             // if(customName.includes('.jpg')
             //     || customName.includes('.png')
             //     || customName.includes('.tif') ) await fs.promises.rename(folder + '/' + file, folder + '/images/' + file);

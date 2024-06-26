@@ -8,7 +8,8 @@ export const add = async(body) => {
             content: body.content,
             authors: body.authors,
             htmlContent: body.htmlContent,
-            credit: body.credit
+            credit: body.credit,
+            images: body.images,
         });
 
         await newNote.save()
