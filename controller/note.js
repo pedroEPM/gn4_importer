@@ -8,6 +8,8 @@ export const setNewNote = async() => {
     try {
 
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('story_'));
+        
+        
         for(const file of files) {
             const { story: noteData } = await readerXML(folder + '/' + file);
             const bodyContent = await parseXML(folder + '/' + file, 'xmlText')
@@ -28,8 +30,10 @@ export const setNewNote = async() => {
             }
             body.images = images;
           
-            await add(body);
-            await fs.promises.rename(folder + '/' + file, folder + '/notesReaded/' + file);
+
+            console.log(body)
+            // await add(body);
+            // await fs.promises.rename(folder + '/' + file, folder + '/notesReaded/' + file);
         }
 
         console.log('- All notes are upadated -')

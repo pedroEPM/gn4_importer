@@ -43,13 +43,40 @@ export const getPDFS = async() => {
         const data = {};
         const allPDFs = await pdf.find({});
 
-        // for(const littlePDF of allPDFs) {
+        
+        for(const littlePDF of allPDFs) {
             // data[littlePDF.publication] = littlePDF.publication;
-            // data[littlePDF.publication + '-' + littlePDF.section] = littlePDF.publication + '-' + littlePDF.section;
-        // }
+            data[littlePDF.publication.toLowerCase() + '-' + littlePDF.section] = littlePDF.publication.toLowerCase() + ' - ' + littlePDF.section.toLowerCase();
+        }
 
+        console.log(data)
         return allPDFs;
     } catch (error) {
         console.log('Error getPDFS ', error);
     }
 }
+
+
+ 
+const notebooks_ = {
+    'diario de yucatan-cuadernoa' : '637663de0b99890014be9d4e',
+    'diario de yucatan-yucatán' : '637663de0b99890014be9d4e',
+    'diario de yucatan-nacional-internacional' : '63767466375114001322b11a',
+    'diario de yucatan-local': '63767468375114001322b127',
+    'diario de yucatan-imagen': '63767467375114001322b11d',
+    'diario de yucatan-deportes': '63767466375114001322b11b',
+    'publimetro-publimetro': '6376747b375114001322b176'
+}
+
+
+const publications_ = {
+    'diario de yucatan': '637663de0b99890014be9d4e',
+    'publimetro': '637663df0b99890014be9d63',
+    
+}
+
+
+// : {
+//     notebook: '',
+//     publication: '',
+// }

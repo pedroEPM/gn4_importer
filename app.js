@@ -10,9 +10,8 @@ import images from './routes/images.js'
 
 const app = express();
 
+// import { getPDFS_ } from './controller/pdf.js'
 
-
- 
 app.use(express.json());
 app.use(logger('dev'))
 app.use(cors());
