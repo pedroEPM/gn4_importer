@@ -47,16 +47,16 @@ export const setNewImage = async() => {
 
 export const findByXMLId = async(id) => {
     try {
-        return await find();
+        return await findByXMLID(id);
     } catch (error) {
         console.log(error)
         
     }
 }
 
-export const find_ = async(id) => {
+export const find_ = async() => {
     try {
-        return await findByXMLID(id);
+        return await find();
     } catch (error) {
         console.log(error)
         
