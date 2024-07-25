@@ -26,7 +26,7 @@ router.get('/XML/:id', async (req, res = express.response) => {
 router.get('/onlyPDF', async (req, res = express.response) => {
     try {
        
-        const image = await find_(+id);
+        const image = await find_();
         res.status(200).json({
             ok: true,
             msg: image,
