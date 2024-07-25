@@ -31,9 +31,9 @@ export const setNewNote = async() => {
             body.images = images;
           
 
-            console.log(body)
-            // await add(body);
-            // await fs.promises.rename(folder + '/' + file, folder + '/notesReaded/' + file);
+            // console.log(body)
+            await add(body);
+            await fs.promises.rename(folder + '/' + file, folder + '/notesReaded/' + file);
         }
 
         console.log('- All notes are upadated -')

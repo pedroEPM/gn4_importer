@@ -1,7 +1,7 @@
 export const whatIsThetype = (type) => {
     const types = {
         'image/jpeg': '.jpg',
-        'image/pdf': '.jpg',
+        'image/pdf': '.pdf',
         'image/png': '.png',
         'image/tiff': '.tif'
     }

@@ -10,7 +10,6 @@ export const setNewPDF = async() => {
     try {
 
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('document_'));
-        console.log(files.length)
         // const oneFile = [files[0], files[1]]
         for(const file of files) {
             const { document: pdfData } = await readerXML(folder + '/' + file);

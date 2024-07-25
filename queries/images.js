@@ -17,6 +17,17 @@ export const add = async(body) => {
     }
 }
 
+export const find = async (XMLID) => {
+    try {
+        return await image.find({
+            type: '.pdf'
+        });
+    } catch (error) {
+        console.log('Error find by XMLID ', error);
+    }
+}
+
+
 export const findByXMLID = async (XMLID) => {
     try {
         return await image.findOne({XMLID});

@@ -10,8 +10,6 @@ import images from './routes/images.js'
 
 const app = express();
 
-// import { getPDFS_ } from './controller/pdf.js'
-
 app.use(express.json());
 app.use(logger('dev'))
 app.use(cors());
@@ -23,6 +21,16 @@ app.use('/api/image', images);
 
 console.clear();
 connection();
+
+// import { readXML } from './utils/setFolder.js'
+// readXML()
+// import { setNewImage } from './controller/image.js'
+// setNewImage()
+// import { setNewPDF } from './controller/pdf.js'
+// setNewPDF()
+// import { setNewNote } from './controller/note.js'
+// setNewNote()
+
 
 const port = process.env.PORT ?? 5001;
 app.listen(port, () => {
