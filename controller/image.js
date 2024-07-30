@@ -31,18 +31,18 @@ export const setNewImage = async() => {
 
             allTypes[ctype] = '';
             
-            if(ctype === 'image/vdn.adobe.photoshop' 
-                || ctype === 'image/x-eps'
-                || ctype === 'application/postscript'
-                || ctype === 'image/bmp') console.log(ctype + ' ' + body.XMLID);
+            // if(ctype === 'image/vdn.adobe.photoshop' 
+            //     || ctype === 'image/x-eps'
+            //     || ctype === 'application/postscript'
+            //     || ctype === 'image/bmp') console.log(ctype + ' ' + body.XMLID);
  
-            // await add(body);
-            // await fs.promises.rename(folder + '/' + file, folder + '/imagesReaded/' + file);
+            await add(body);
+            await fs.promises.rename(folder + '/' + file, folder + '/imagesReaded/' + file);
             // if(body.type === '.pdf') await fs.promises.copyFile(folder + '/' + body.XMLID + body.type, folder + '/imagePDF/' + body.XMLID + body.type);
             
         }
 
-        console.log(allTypes)
+        // console.log(allTypes)
         console.log('- All images are upadated -')
         
     } catch (error) {
