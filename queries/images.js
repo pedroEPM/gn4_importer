@@ -21,11 +21,11 @@ export const find = async (XMLID) => {
     try {
         return await image.find({
             $or: [
-                { type: "pdf" },
-                { type: "eps" },
-                { type: "ps" },
-                { type: "eps" },
-                { type: "psd" },
+                { type: ".pdf" },
+                { type: ".eps" },
+                { type: ".ps" },
+                { type: ".eps" },
+                { type: ".psd" },
             ]
         });
     } catch (error) {
