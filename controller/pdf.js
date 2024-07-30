@@ -3,7 +3,7 @@ import fs from 'fs';
 import { add, findByID, findByXMLID, getPDFS } from '../queries/pdfs.js';
 import { readerXML } from '../utils/readXML.js'
 
-const folder = process.env.FOLDER;
+const folder = process.env.FOLDER + '/pdfs';
 // const folder = process.env.FOLDER + '/xml/pdfs';
 
 export const setNewPDF = async() => {

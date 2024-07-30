@@ -3,7 +3,7 @@ import fs from 'fs';
 import { add, findByID, findByXMLID, find } from '../queries/images.js';
 import { readerXML } from '../utils/readXML.js'
 import { whatIsThetype } from '../utils/imageTypes.js' 
-const folder = process.env.FOLDER;
+const folder = process.env.FOLDER + '/images/images';
 
 export const setNewImage = async() => {
     try {
@@ -29,15 +29,20 @@ export const setNewImage = async() => {
                 body.type = '.jpg';
             }
 
-            // allTypes[ctype] = '';
+            allTypes[ctype] = '';
+            
+            if(ctype === 'image/vdn.adobe.photoshop' 
+                || ctype === 'image/x-eps'
+                || ctype === 'application/postscript'
+                || ctype === 'image/bmp') console.log(ctype + ' ' + body.XMLID);
  
-            await add(body);
-            await fs.promises.rename(folder + '/' + file, folder + '/imagesReaded/' + file);
-            if(body.type === '.pdf') await fs.promises.copyFile(folder + '/' + body.XMLID + body.type, folder + '/imagePDF/' + body.XMLID + body.type);
+            // await add(body);
+            // await fs.promises.rename(folder + '/' + file, folder + '/imagesReaded/' + file);
+            // if(body.type === '.pdf') await fs.promises.copyFile(folder + '/' + body.XMLID + body.type, folder + '/imagePDF/' + body.XMLID + body.type);
             
         }
 
-        // console.log(allTypes)
+        console.log(allTypes)
         console.log('- All images are upadated -')
         
     } catch (error) {
@@ -56,7 +61,13 @@ export const findByXMLId = async(id) => {
 
 export const find_ = async() => {
     try {
-        return await find();
+        const img = await find();
+        // const mmm = {};
+        // for(const littleImg of img) mmm[littleImg.credit] = null
+        
+
+        // console.log(mmm)
+        return img;
     } catch (error) {
         console.log(error)
         

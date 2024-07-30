@@ -25,6 +25,14 @@ const Noteschema = new mongoose.Schema({
         type: [Number],
         default: []
     },
+    newTitle: {
+        type: String,
+        default: null
+    },
+    newBody: {
+        type: String,
+        default: null
+    }
 });
 
 const Notes = mongoose.model('Note', Noteschema);

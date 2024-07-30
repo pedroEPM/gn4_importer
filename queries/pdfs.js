@@ -45,8 +45,11 @@ export const getPDFS = async() => {
 
         
         for(const littlePDF of allPDFs) {
+            const n = new Date(littlePDF.publicationDate).toISOString().substring(0,10);
+            data[n] = null;
+
             // data[littlePDF.publication] = littlePDF.publication;
-            data[littlePDF.publication.toLowerCase() + '-' + littlePDF.section] = littlePDF.publication.toLowerCase() + ' - ' + littlePDF.section.toLowerCase();
+            // data[littlePDF.publication.toLowerCase() + '-' + littlePDF.section.toLowerCase()] = littlePDF.publication.toLowerCase() + ' - ' + littlePDF.section.toLowerCase();
         }
 
         console.log(data)

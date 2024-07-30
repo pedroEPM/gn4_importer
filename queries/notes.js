@@ -41,3 +41,17 @@ export const getNotes = async(params) => {
         console.log('Error getPDFs', error);        
     }
 }
+
+export const setNewBodyAndTitle = async(id, params) => {
+    try {
+        const noteFound = await note.findByIdAndUpdate(id);
+
+        noteFound.newTitle = params.newTitle;
+        noteFound.newBody = params.newBody;
+
+        await noteFound.save()
+        return noteFound;
+    } catch (error) {
+        console.log('Error set new title and body', error);        
+    }
+}

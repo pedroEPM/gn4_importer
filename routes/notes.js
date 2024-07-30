@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { getNotes_, findById, findByXMLId } from '../controller/note.js'
+import { getNotes_, findById, findByXMLId, setNewBodyAndTitle_ } from '../controller/note.js'
 
 router.get('/', async (req, res = express.response) => {
     try {
@@ -45,6 +45,25 @@ router.get('/XML/:id', async (req, res = express.response) => {
     try {
         const { id } = req.params;
         const note = await findByXMLId(+id);
+        res.status(200).json({
+            ok: true,
+            msg: note,
+        })
+        
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            msg: 'Error',
+            error,
+        })
+    }
+});
+
+
+router.post('/:id', async (req, res = express.response) => {
+    try {
+        const { id } = req.params;
+        const note = await setNewBodyAndTitle_(id, req.body);
         res.status(200).json({
             ok: true,
             msg: note,

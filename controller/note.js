@@ -1,8 +1,8 @@
 import fs from 'fs';
 
-import { add, findByID, findByXMLID, getNotes } from '../queries/notes.js';
+import { add, findByID, findByXMLID, getNotes, setNewBodyAndTitle } from '../queries/notes.js';
 import { readerXML, parseXML } from '../utils/readXML.js'
-const folder = process.env.FOLDER;
+const folder = process.env.FOLDER + '/notes';
 
 export const setNewNote = async() => {
     try {
@@ -80,5 +80,13 @@ export const findByXMLId = async(id) => {
     } catch (error) {
         console.log(error)
         
+    }
+}
+
+export const setNewBodyAndTitle_ = async(id, params) => {
+    try {
+        return await setNewBodyAndTitle(id, params);
+    } catch (error) {
+        console.log(error)
     }
 }
