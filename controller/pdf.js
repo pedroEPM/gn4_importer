@@ -66,9 +66,9 @@ export const getImagesByPDFs_ = async(req, res) => {
     try {
         const { year } = req.params;
         const pdfs = await getImagesByPDFs(year);
-        const contenido = pdfs.join('\n');
-        console.log(`--- Saved ${year} file  ---`)
-        await fs.promises.writeFile(`./files/images-${year}.txt`, contenido);
+        // const contenido = pdfs.join('\n');
+        // console.log(`--- Saved ${year} file  ---`)
+        // await fs.promises.writeFile(`./files/images-${year}.txt`, contenido);
         return  res.status(200).json({
             ok: true,
             counter: pdfs?.length,
