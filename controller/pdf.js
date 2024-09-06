@@ -68,7 +68,7 @@ export const getImagesByPDFs_ = async(req, res) => {
         const pdfs = await getImagesByPDFs(year);
         return  res.status(200).json({
             ok: true,
-            counter: pdfs.length,
+            counter: pdfs?.length,
             msg: pdfs,
         })
     } catch (error) {
