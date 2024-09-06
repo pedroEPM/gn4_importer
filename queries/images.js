@@ -33,7 +33,6 @@ export const find = async (XMLID) => {
     }
 }
 
-
 export const findByXMLID = async (XMLID) => {
     try {
         return await image.findOne({XMLID});

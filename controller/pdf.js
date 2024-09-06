@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { add, findByID, findByXMLID, getPDFS } from '../queries/pdfs.js';
+import { add, findByID, findByXMLID, getPDFS, getImagesByPDFs } from '../queries/pdfs.js';
 import { readerXML } from '../utils/readXML.js'
 
 const folder = process.env.FOLDER + '/pdfs';
@@ -59,5 +59,24 @@ export const getPDFS_ = async() => {
         return await getPDFS();
     } catch (error) {
         console.log(error)
+    }
+}
+
+export const getImagesByPDFs_ = async(req, res) => {
+    try {
+        const { year } = req.params;
+        const pdfs = await getImagesByPDFs(year);
+        return  res.status(200).json({
+            ok: true,
+            counter: pdfs.length,
+            msg: pdfs,
+        })
+    } catch (error) {
+        console.log('Error in get images by PDFs controller ', error);
+        return  res.status(500).json({
+            ok: false,
+            msg: 'Error',
+            error
+        })
     }
 }

@@ -8,7 +8,6 @@ export const whatIsThetype = (type) => {
         'image/pdf': '.pdf',
         'image/x-eps': '.eps',
         'application/postscript': '.ps',
-        'image/x-eps': '.eps',
         'image/vdn.adobe.photoshop': '.psd'
     }
 

@@ -25,14 +25,18 @@ connection();
 // import { readXML } from './utils/setFolder.js'
 // readXML()
 // import { setNewImage } from './controller/image.js'
+
+
 // setNewImage()
 // import { setNewPDF } from './controller/pdf.js'
 // setNewPDF()
-import { setNewNote } from './controller/note.js'
-setNewNote()
+// import { setNewNote } from './controller/note.js'
+// setNewNote()
 
 // import { getPDFS } from './queries/pdfs.js'
 // getPDFS()
+
+
 
 const port = process.env.PORT ?? 5001;
 app.listen(port, () => {

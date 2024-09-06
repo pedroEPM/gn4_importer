@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { getPDFS_ } from '../controller/pdf.js'
+import { getPDFS_, getImagesByPDFs_ } from '../controller/pdf.js'
 
 router.get('/', async (req, res = express.response) => {
     try {
@@ -19,6 +19,9 @@ router.get('/', async (req, res = express.response) => {
         })
     }
 });
+
+router.get('/:year', [], async(req, res = express.response) => await getImagesByPDFs_(req, res))
+
  
 
 export default router;
