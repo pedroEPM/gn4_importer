@@ -28,8 +28,8 @@ connection();
 // setNewImage()
 // import { setNewPDF } from './controller/pdf.js'
 // setNewPDF()
-// import { setNewNote } from './controller/note.js'
-// setNewNote()
+import { setNewNote } from './controller/note.js'
+setNewNote()
 
 // import { getPDFS } from './queries/pdfs.js'
 // getPDFS()

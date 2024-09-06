@@ -2,13 +2,15 @@ import fs from 'fs';
 
 import { add, findByID, findByXMLID, getNotes, setNewBodyAndTitle } from '../queries/notes.js';
 import { readerXML, parseXML } from '../utils/readXML.js'
+// const folder = process.env.FOLDER;
 const folder = process.env.FOLDER + '/notes';
 
 export const setNewNote = async() => {
     try {
+        console.log('--- Reading notes ---')
 
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('story_'));
-        
+        console.log(files.length)
         
         for(const file of files) {
             const { story: noteData } = await readerXML(folder + '/' + file);
@@ -17,7 +19,8 @@ export const setNewNote = async() => {
             const images = [];
 
 
-            body.XMLID = file.trim().toLowerCase().replace('.xml', '').replace('story_', '');
+            body.XMLID = file.trim().toLowerCase().split('story_')[1].replace('.xml', '').replace('story_', '');
+         
             if(noteData[0]?.title) body.title = noteData[0]?.title[0];
             if(noteData[0]?.summary) body.content = noteData[0]?.summary[0];
             if(noteData[0]?.authors) body.authors = noteData[0]?.authors[0];

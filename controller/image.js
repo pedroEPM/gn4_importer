@@ -3,25 +3,27 @@ import fs from 'fs';
 import { add, findByID, findByXMLID, find } from '../queries/images.js';
 import { readerXML } from '../utils/readXML.js'
 import { whatIsThetype } from '../utils/imageTypes.js' 
-const folder = process.env.FOLDER + '/images/images';
+const folder = process.env.FOLDER + '/images';
 
 export const setNewImage = async() => {
+    let errorInFile = null;
     try {
         const allTypes = {};
 
         console.log('--- Uploading Images ---');
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('image_'));
         for(const file of files) {
+            errorInFile = file;
             const { image: imageData } = await readerXML(folder + '/' + file);
             const body = {};
-
-            body.XMLID = file.trim().toLowerCase().replace('.xml', '').replace('image_', '');
+            body.XMLID = file.trim().toLowerCase().split('image_')[1].replace('.xml', '').replace('image_', '');
             if(imageData[0]?.title) body.title = imageData[0]?.title[0];
             if(imageData[0]?.summary) body.content = imageData[0]?.summary[0];
             if(imageData[0]?.authors) body.authors = imageData[0]?.authors[0];
             if(imageData[0]?.credit) body.credit = imageData[0]?.credit[0];
 
             const ctype = imageData[0].data[0]['$'].mime;
+            body.mime = ctype;
             if(ctype){
                 const finalType = whatIsThetype(ctype.trim().toLowerCase())
                 body.type = finalType;
@@ -46,6 +48,7 @@ export const setNewImage = async() => {
         console.log('- All images are upadated -')
         
     } catch (error) {
+        console.log(errorInFile)
         console.log('Error set new image ', error);
     }
 }

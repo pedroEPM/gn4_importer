@@ -17,7 +17,7 @@ export const setNewPDF = async() => {
             const images = [];
             const notes = [];
 
-            body.XMLID = file.trim().toLowerCase().replace('.xml', '').replace('document_', '');
+            body.XMLID = file.trim().toLowerCase().split('document_')[1].replace('.xml', '').replace('document_', '');
             if(pdfData[0]?.title) body.title = pdfData[0]?.title[0];
             if(pdfData[0]?.pagenum) body.page = +pdfData[0]?.pagenum[0] ?? 0;
             if(pdfData[0]?.section) body.section = pdfData[0]?.section[0];

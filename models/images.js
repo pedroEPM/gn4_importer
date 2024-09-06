@@ -20,6 +20,9 @@ const Imageschema = new mongoose.Schema({
     },
     type: {
         type: String
+    },
+    mime: {
+        type: String
     }
 });
 
