@@ -1,12 +1,13 @@
 import 'dotenv/config';
 import connection from "./databases/mongo.js";
 import express from 'express';
-import cors  from 'cors';
-import logger  from 'morgan';
+import cors from 'cors';
+import logger from 'morgan';
 
 import notes from './routes/notes.js'
 import pdfs from './routes/pdfs.js'
 import images from './routes/images.js'
+import publicIP from './utils/getPublicIP.js';
 
 const app = express();
 
@@ -36,10 +37,9 @@ connection();
 // import { getPDFS } from './queries/pdfs.js'
 // getPDFS()
 
-
-
 const port = process.env.PORT ?? 5001;
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
+    publicIP()
 });
 

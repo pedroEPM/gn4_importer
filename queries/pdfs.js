@@ -86,15 +86,7 @@ export const getImagesByPDFs = async (year) => {
         for(const littlePDF of pdfs_) {
             const splitedDate = new Date(littlePDF.publicationDate).toISOString().split('-');
             for(const littleImg of littlePDF.images) {
-                const image = await findByXMLImgID(littleImg);
-                if(image && ( 
-                    image.type !== '.jpg'
-                    && image.type !== '.png'
-                    && image.type !== '.tif'
-                    && image.type !== '.gif' 
-                    )
-                )
-                finalImages.push(`/${splitedDate[0]}/${splitedDate[1]}/${littleImg}${image.type}`)
+                finalImages.push(`/${splitedDate[0]}-${splitedDate[1]}/${littleImg}`)
             }
         }
 
