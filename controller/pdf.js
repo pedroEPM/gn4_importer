@@ -65,9 +65,18 @@ export const getPDFS_ = async(year) => {
 export const getPDFsByID = async(req, res) => {
     try {
         const { id } = req.params;
-        return await findByID(id);
+        const pdfFound = await findByID(id);
+        return res.status(200).json({
+            ok: true,
+            msg: pdfFound,
+        })
     } catch (error) {
-        console.log(error);
+        console.log('Error in get pdf by id ', error);
+        return  res.status(500).json({
+            ok: false,
+            msg: 'Error',
+            error
+        })
     }
 } 
 
@@ -78,7 +87,7 @@ export const getImagesByPDFs_ = async(req, res) => {
         // const contenido = pdfs.join('\n');
         // console.log(`--- Saved ${year} file  ---`)
         // await fs.promises.writeFile(`./files/images-${year}.txt`, contenido);
-        return  res.status(200).json({
+        return res.status(200).json({
             ok: true,
             counter: pdfs?.length,
             msg: pdfs,
