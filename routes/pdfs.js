@@ -5,6 +5,7 @@ import { getPDFS_, getImagesByPDFs_ } from '../controller/pdf.js'
 
 router.get('/:year', async (req, res = express.response) => {
     try {
+        console.log('--- Getting PDFS --- ')
         const { year } = req.params;
 
         const pdfs = await getPDFS_(year);

@@ -84,9 +84,9 @@ export const getPDFS = async (littleYear) => {
     }
 }
 
-setTimeout(async() => {
-    console.log(await getPDFS())
-}, 3000);
+// setTimeout(async() => {
+//     console.log(await getPDFS())
+// }, 3000);
 
 export const getImagesByPDFs = async (year) => {
     try {
