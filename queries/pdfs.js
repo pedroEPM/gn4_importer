@@ -62,7 +62,7 @@ export const getPDFS = async (littleYear) => {
                     $gte: new Date(littleYear + '-01-01'),
                     $lte: new Date(littleYear + '-12-31'),
                 },
-            });
+            }, '-content');
 
 
             // for (const littlePDF of allPDFs) {
@@ -74,9 +74,7 @@ export const getPDFS = async (littleYear) => {
             // }
         // }
 
-        
-        console.log(data.length)
-        console.log('--- Done! ---')
+        console.log('--- Returning pdfs! ---')
         return allPDFs;
     } catch (error) {
         console.log('Error getPDFS ', error);
