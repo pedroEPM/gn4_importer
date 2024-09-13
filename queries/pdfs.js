@@ -40,26 +40,53 @@ export const findByID = async (ID) => {
     }
 }
 
-export const getPDFS = async () => {
+export const getPDFS = async (littleYear) => {
     try {
+        console.log('--- Getting all sections ---')
         const data = {};
-        const allPDFs = await pdf.find({});
+        // const years = [
+        //     2015,
+        //     2016,
+        //     2017,
+        //     2018,
+        //     2019,
+        //     2020,
+        //     2021,
+        //     2022,
+        //     2023,
+        //     2024,
+        // ]
+        // for (const littleYear of years) {
+            console.log(`--- ${littleYear} ---`)
+            const allPDFs = await pdf.find({
+                publicationDate: {
+                    $gte: new Date(littleYear + '-01-01'),
+                    $lte: new Date(littleYear + '-12-31'),
+                },
+            });
 
 
-        for (const littlePDF of allPDFs) {
-            const n = new Date(littlePDF.publicationDate).toISOString().substring(0, 10);
-            data[n] = null;
+            // for (const littlePDF of allPDFs) {
+            //     // const n = new Date(littlePDF.publicationDate).toISOString().substring(0, 10);
+            //     // data[n] = null;
 
-            // data[littlePDF.publication] = littlePDF.publication;
-            // data[littlePDF.publication.toLowerCase() + '-' + littlePDF.section.toLowerCase()] = littlePDF.publication.toLowerCase() + ' - ' + littlePDF.section.toLowerCase();
-        }
+            //     // data[littlePDF.publication] = littlePDF.publication;
+            //     data[littlePDF.publication.toLowerCase() + '-' + littlePDF.section.toLowerCase()] = littlePDF.publication.toLowerCase() + ' - ' + littlePDF.section.toLowerCase();
+            // }
+        // }
 
+        
         console.log(data)
+        console.log('--- Done! ---')
         return allPDFs;
     } catch (error) {
         console.log('Error getPDFS ', error);
     }
 }
+
+setTimeout(async() => {
+    console.log(await getPDFS())
+}, 3000);
 
 export const getImagesByPDFs = async (year) => {
     try {
@@ -83,9 +110,9 @@ export const getImagesByPDFs = async (year) => {
         ]);
 
         const finalImages = [];
-        for(const littlePDF of pdfs_) {
+        for (const littlePDF of pdfs_) {
             const splitedDate = new Date(littlePDF.publicationDate).toISOString().split('-');
-            for(const littleImg of littlePDF.images) {
+            for (const littleImg of littlePDF.images) {
                 finalImages.push(`/${splitedDate[0]}-${splitedDate[1]}/${littleImg}`)
             }
         }

@@ -54,9 +54,9 @@ export const setNewPDF = async() => {
     }
 }
 
-export const getPDFS_ = async() => {
+export const getPDFS_ = async(year) => {
     try {
-        return await getPDFS();
+        return await getPDFS(year);
     } catch (error) {
         console.log(error)
     }

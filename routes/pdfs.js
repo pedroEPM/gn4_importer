@@ -3,9 +3,11 @@ const router = express.Router();
 
 import { getPDFS_, getImagesByPDFs_ } from '../controller/pdf.js'
 
-router.get('/', async (req, res = express.response) => {
+router.get('/:year', async (req, res = express.response) => {
     try {
-        const pdfs = await getPDFS_();
+        const { year } = req.params;
+
+        const pdfs = await getPDFS_(year);
         res.status(200).json({
             ok: true,
             msg: pdfs,
