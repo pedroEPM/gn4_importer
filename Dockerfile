@@ -1,15 +1,16 @@
-FROM node:20-bullseye-slim
+FROM node:20.15.0-alpine
 
 WORKDIR /c_gn4_importer
 
-COPY package*.json ./
+# COPY package*.json ./
 
-RUN npm install --no-cache --verbose
+# RUN npm install --no-cache --verbose
+RUN npm install
 
-COPY . .
+# COPY . .
 
 EXPOSE 3016
 
-# CMD ["npm", "start"]
-CMD ["/bin/bash"]
+CMD ["npm", "start"]
+# CMD ["/bin/bash"]
 
