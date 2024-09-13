@@ -9,13 +9,13 @@ router.get('/:year', async (req, res = express.response) => {
         const { year } = req.params;
 
         const pdfs = await getPDFS_(year);
-        res.status(200).json({
+        return res.status(200).json({
             ok: true,
             msg: pdfs,
         })
         
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             ok: false,
             msg: 'Error',
             error,
