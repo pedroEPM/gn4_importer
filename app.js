@@ -25,7 +25,7 @@ connection();
 
 // import { readXML } from './utils/setFolder.js'
 // readXML()
-// import { setNewImage } from './controller/image.js'
+import { setNewImage } from './controller/image.js'
 
 
 // setNewImage()

@@ -9,6 +9,7 @@ export const add = async(body) => {
             authors: body.authors,
             credit: body.credit,
             type: body.type,
+            mime: body.mime,
         });
 
         await newImage.save()
@@ -19,15 +20,24 @@ export const add = async(body) => {
 
 export const find = async (XMLID) => {
     try {
-        return await image.find({
-            $or: [
-                { type: ".pdf" },
-                { type: ".eps" },
-                { type: ".ps" },
-                { type: ".eps" },
-                { type: ".psd" },
-            ]
-        });
+        // return await image.find({
+        //     $or: [
+        //         { type: ".pdf" },
+        //         { type: ".eps" },
+        //         { type: ".ps" },
+        //         { type: ".eps" },
+        //         { type: ".psd" },
+        //     ]
+        // });
+
+        return await image.aggregate([
+            {
+              $group: {
+                _id: "$type",      // Agrupa por la propiedad mime
+                count: { $sum: 1 } // Cuenta cuántos hay en cada grupo
+              }
+            }
+          ]);
     } catch (error) {
         console.log('Error find by XMLID ', error);
     }

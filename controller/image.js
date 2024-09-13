@@ -64,6 +64,7 @@ export const findByXMLId = async(id) => {
 
 export const find_ = async() => {
     try {
+        console.log('--- Getting data ---')
         const img = await find();
         // const mmm = {};
         // for(const littleImg of img) mmm[littleImg.credit] = null
@@ -76,3 +77,8 @@ export const find_ = async() => {
         
     }
 }
+
+
+// setTimeout(async() => {
+//     console.log(await find_());
+// }, 5000);
