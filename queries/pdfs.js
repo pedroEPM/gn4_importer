@@ -76,7 +76,7 @@ export const getPDFS = async (littleYear) => {
         // }
 
         
-        console.log(data)
+        // console.log(data)
         console.log('--- Done! ---')
         return allPDFs;
     } catch (error) {
