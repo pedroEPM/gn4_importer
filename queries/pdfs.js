@@ -42,7 +42,6 @@ export const findByID = async (ID) => {
 
 export const getPDFS = async (littleYear) => {
     try {
-        console.log('--- Getting all sections ---')
         const data = {};
         // const years = [
         //     2015,
@@ -76,7 +75,7 @@ export const getPDFS = async (littleYear) => {
         // }
 
         
-        // console.log(data)
+        console.log(data.length)
         console.log('--- Done! ---')
         return allPDFs;
     } catch (error) {
