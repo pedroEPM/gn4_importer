@@ -62,6 +62,15 @@ export const getPDFS_ = async(year) => {
     }
 }
 
+export const getPDFsByID = async(req, res) => {
+    try {
+        const { id } = req.params;
+        return await findByID(id);
+    } catch (error) {
+        console.log(error);
+    }
+} 
+
 export const getImagesByPDFs_ = async(req, res) => {
     try {
         const { year } = req.params;
