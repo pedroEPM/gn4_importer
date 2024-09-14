@@ -28,6 +28,9 @@ const PDFSchema = new mongoose.Schema({
     publicationDate: {
         type: Date
     },
+    editDate: {
+        type: Date,
+    },
     publication: {
         type: String
     },
