@@ -1,8 +1,8 @@
-FROM node:20.15.0-bullseye-slim
+FROM node:20-bullseye
 
-WORKDIR /c_gn4_importer
+WORKDIR /c-gn4-importer
 
-COPY package*.json ./
+COPY . .
 
 # RUN npm install --no-cache --verbose
 RUN npm install

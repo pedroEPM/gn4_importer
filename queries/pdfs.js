@@ -158,17 +158,22 @@ export const eeeeeeeeeee = async () => {
     try {
         console.log('mmmmmm')
         const aaaaaaaaa = await pdf.find({
-            section: { $regex: 'Noticias', $options: 'i' },
+            section: { $regex: 'A darle', $options: 'i' },
             page: 0
         }, '-content')
 
         const dataaaaaa = {}
         const dataaaaaa2 = {}
         const editDate = new Date().toISOString().substring(0,10);
-        console.log(aaaaaaaaa.length)
+        
+        // console.log(aaaaaaaaa.length)
+        let counter = 0;
         for(const littlePDF of aaaaaaaaa) {
-            const titleSplited = littlePDF.title?.trim().split('Noticias')[1].split(' ')[0]//.split('-')[0]
-            // const titleSplited = littlePDF.title?.trim().split(' ')[0]
+
+            // counter++;
+            // console.log(counter)
+            // const titleSplited = littlePDF.title?.toLowerCase()?.trim()?.split('a darle')[2]?.split(' ')[0]//.split('-')[0]
+            const titleSplited = littlePDF.title?.trim().split(' ')[0]
             if(Number(+titleSplited)) {
                 dataaaaaa[titleSplited] = +titleSplited;
             } else {
@@ -176,18 +181,21 @@ export const eeeeeeeeeee = async () => {
                 // dataaaaaa2[titleSplited] = littlePDF.title?.trim()
             }
 
+            // console.log('-----------')
             if(Number(+titleSplited)){
                 // littlePDF.page = +titleSplited;
                 // littlePDF.editDate = editDate;
                 // await littlePDF.save() 
             }
+            // console.log('6zxxxxxxxxx-----------')
+        
         }
 
         console.log(dataaaaaa)
         console.log(dataaaaaa2)
         // console.log(aaaaaaaaa.length)
     } catch (error) {
-
+        console.log(error)
     }
 }
 
