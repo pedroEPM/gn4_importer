@@ -23,7 +23,7 @@ export const getNote = async(XMLID) => {
         
         return await note.findOne({
             XMLID: +XMLID
-        })
+        }, '-title -content -htmlContent')
     } catch (error) {
         console.log('Error ', error);        
     }
