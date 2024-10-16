@@ -44,7 +44,7 @@ export const getPDFS = async (littleYear) => {
     try {
         const data = {};
         // const years = [
-        //     2015,
+            // 2015,
         //     2016,
         //     2017,
         //     2018,
@@ -65,24 +65,31 @@ export const getPDFS = async (littleYear) => {
         }, '-content');
 
 
-        // for (const littlePDF of allPDFs) {
-        //     // const n = new Date(littlePDF.publicationDate).toISOString().substring(0, 10);
-        //     // data[n] = null;
+        console.log('Starting for')
+        const notieneCuaderno = []
+        for (const littlePDF of allPDFs) {
+            // const n = new Date(littlePDF.publicationDate).toISOString().substring(0, 10);
+            // data[n] = null;
 
-        //     // data[littlePDF.publication] = littlePDF.publication;
-        //     data[littlePDF.publication.toLowerCase() + '-' + littlePDF.section.toLowerCase()] = littlePDF.publication.toLowerCase() + ' - ' + littlePDF.section.toLowerCase();
-        // }
-        // }
+            // data[littlePDF.publication] = littlePDF.publication;
 
+            // if(littlePDF.publication.toLowerCase() === 'diario de yucatan' &&  littlePDF.section.toLowerCase() === '') notieneCuaderno.push(littlePDF.XMLID)
+            data[littlePDF.publication.toLowerCase() + '-' + littlePDF.section.toLowerCase()] = null;
+            // data[littlePDF.publication.toLowerCase() + '-' + littlePDF.section.toLowerCase()] = littlePDF.publication.toLowerCase() + ' - ' + littlePDF.section.toLowerCase();
+        // }
+        }
+
+
+        console.log(data)
         console.log('--- Returning pdfs! ---')
-        return allPDFs;
+        return data;
     } catch (error) {
         console.log('Error getPDFS ', error);
     }
 }
 
 // setTimeout(async() => {
-//     console.log(await getPDFS())
+//     console.log(await getPDFS(2016))
 // }, 3000);
 
 export const getImagesByPDFs = async (year) => {
