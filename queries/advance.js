@@ -11,7 +11,7 @@ export const getPDFs = async(year) => {
                 $lte: new Date(year + '-12-31'),
             },
             notes: { $ne: null }
-        }, '-title -edition -editDate -images').limit(10);
+        }, '-title -edition -editDate -images');
 
     } catch (error) {
         console.log('Error ', error);        
