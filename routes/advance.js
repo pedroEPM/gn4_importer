@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { getPDFs, getNote } from '../queries/advance.js'
+import { getPDFs, getNote, getImage } from '../queries/advance.js'
  
  
 router.get('/pdf/:year', async (req, res = express.response) => {
@@ -30,6 +30,25 @@ router.get('/note/:xmlid', async (req, res = express.response) => {
         res.status(200).json({
             ok: true,
             msg: note,
+        })
+        
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            msg: 'Error',
+            error,
+        })
+    }
+});
+
+router.get('/image/:xmlid', async (req, res = express.response) => {
+    try {
+        const { xmlid } = req.params;
+        const image = await getImage(xmlid);
+   
+        res.status(200).json({
+            ok: true,
+            msg: image,
         })
         
     } catch (error) {

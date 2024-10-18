@@ -11,7 +11,7 @@ export const getPDFs = async(year) => {
                 $lte: new Date(year + '-12-31'),
             },
             notes: { $ne: null }
-        }, '-title -edition -editDate -images');
+        }, '-title -edition -editDate');
 
     } catch (error) {
         console.log('Error ', error);        
@@ -24,6 +24,19 @@ export const getNote = async(XMLID) => {
         return await note.findOne({
             XMLID: +XMLID
         }, '-title -content -htmlContent')
+    } catch (error) {
+        console.log('Error ', error);        
+    }
+}
+
+
+
+export const getImage = async(XMLID) => {
+    try {
+        
+        return await image.findOne({
+            XMLID: +XMLID
+        })
     } catch (error) {
         console.log('Error ', error);        
     }
