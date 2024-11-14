@@ -13,7 +13,7 @@ export const setNewPDF = async() => {
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('document_'));
         console.log('PDFs found: ', files.length )
         // const oneFile = [files[0], files[1]]
-        for(const file of files) {
+        for(const file of [files[0]]) {
             const { document: pdfData } = await readerXML(folder + '/' + file);
             const body = {};
             const images = [];
@@ -39,6 +39,8 @@ export const setNewPDF = async() => {
                     notes.push(+element['$'].id)
                 });
             }
+
+            console.log(pdfData[0])
 
             body.images = images;
             body.notes = notes;
