@@ -1,4 +1,0 @@
-/run/user/1001/gvfs/smb-share:server=dyarchivostg.local,share=archivo-in$ 
-
-
-

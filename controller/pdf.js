@@ -3,13 +3,14 @@ import fs from 'fs';
 import { add, findByID, findByXMLID, getPDFS, getImagesByPDFs } from '../queries/pdfs.js';
 import { readerXML } from '../utils/readXML.js'
 
-const folder = process.env.FOLDER + '/pdfs';
-// const folder = process.env.FOLDER + '/xml/pdfs';
+const folder = process.env.FOLDER;
+// const folder = process.env.FOLDER + '/pdfs';
 
 export const setNewPDF = async() => {
     try {
 
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('document_'));
+        console.log('PDFs found: ', files.length )
         // const oneFile = [files[0], files[1]]
         for(const file of files) {
             const { document: pdfData } = await readerXML(folder + '/' + file);
@@ -43,8 +44,8 @@ export const setNewPDF = async() => {
 
             // console.log(body)
 
-            await add(body);
-            await fs.promises.rename(folder + '/' + file, folder + '/pdfsReaded/' + file);
+            // await add(body);
+            // await fs.promises.rename(folder + '/' + file, folder + '/pdfsReaded/' + file);
         }
 
         console.log('- All pdfs are upadated -')
