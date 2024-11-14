@@ -1,6 +1,4 @@
 #!/bin/bash
-echo Actualizando contenedor desde github 
-git pull
 echo Deteniendo y removiendo el contenedor anterior
 sleep 3
 docker stop dailyImporter
