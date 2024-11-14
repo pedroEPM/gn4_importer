@@ -3,9 +3,11 @@ import fs from 'fs';
 import { add, findByID, findByXMLID, getNotes, setNewBodyAndTitle } from '../queries/notes.js';
 import { readerXML, parseXML } from '../utils/readXML.js'
 // const folder = process.env.FOLDER;
-const folder = process.env.FOLDER + '/notes';
+// const folder = process.env.FOLDER + '/notes';
+const folder = process.env.FOLDER + '/archivo-in';
 
-export const setNewNote = async() => {
+
+export const setNewNote = async( cUploadDate ) => {
     try {
         console.log('--- Reading notes ---')
 
@@ -32,11 +34,13 @@ export const setNewNote = async() => {
                 });
             }
             body.images = images;
-          
+            body.uploadDate = cUploadDate;
+            
 
             // console.log(body)
-            await add(body);
-            await fs.promises.rename(folder + '/' + file, folder + '/notesReaded/' + file);
+            // await add(body);
+            // await fs.promises.rename(folder + '/' + file, folder + '/notesReaded/' + file);
+            await fs.promises.copyFile(folder + '/' + file, folder + '/exported/' + cUploadDate + '/xmls/' + file);
         }
 
         console.log('- All notes are upadated -')

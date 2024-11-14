@@ -10,6 +10,7 @@ export const add = async(body) => {
             htmlContent: body.htmlContent,
             credit: body.credit,
             images: body.images,
+            uploadDate: body.uploadDate
         });
 
         await newNote.save()

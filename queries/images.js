@@ -10,6 +10,7 @@ export const add = async(body) => {
             credit: body.credit,
             type: body.type,
             mime: body.mime,
+            uploadDate: body.uploadDate,
         });
 
         await newImage.save()

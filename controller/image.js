@@ -3,9 +3,10 @@ import fs from 'fs';
 import { add, findByID, findByXMLID, find } from '../queries/images.js';
 import { readerXML } from '../utils/readXML.js'
 import { whatIsThetype } from '../utils/imageTypes.js' 
-const folder = process.env.FOLDER + '/images';
+// const folder = process.env.FOLDER + '/images';
+const folder = process.env.FOLDER + '/archivo-in';
 
-export const setNewImage = async() => {
+export const setNewImage = async( cUploadDate ) => {
     let errorInFile = null;
     try {
         const allTypes = {};
@@ -32,14 +33,16 @@ export const setNewImage = async() => {
             }
 
             allTypes[ctype] = '';
+            body.uploadDate = cUploadDate;
             
             // if(ctype === 'image/vdn.adobe.photoshop' 
             //     || ctype === 'image/x-eps'
             //     || ctype === 'application/postscript'
             //     || ctype === 'image/bmp') console.log(ctype + ' ' + body.XMLID);
  
-            await add(body);
-            await fs.promises.rename(folder + '/' + file, folder + '/imagesReaded/' + file);
+            // await add(body);
+            await fs.promises.copyFile(folder + '/' + file, folder + '/exported/' + cUploadDate + '/xmls/' + file);
+            // await fs.promises.rename(folder + '/' + file, folder + '/imagesReaded/' + file);
             // if(body.type === '.pdf') await fs.promises.copyFile(folder + '/' + body.XMLID + body.type, folder + '/imagePDF/' + body.XMLID + body.type);
             
         }
