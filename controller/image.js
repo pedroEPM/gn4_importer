@@ -40,8 +40,8 @@ export const setNewImage = async( cUploadDate ) => {
             //     || ctype === 'application/postscript'
             //     || ctype === 'image/bmp') console.log(ctype + ' ' + body.XMLID);
  
-            // await add(body);
-            await fs.promises.copyFile(folder + '/' + file, folder + '/exported/' + cUploadDate + '/xmls/' + file);
+            await add(body);
+            await fs.promises.rename(folder + '/' + file, folder + '/exported/' + cUploadDate + '/xmls/' + file);
             // await fs.promises.rename(folder + '/' + file, folder + '/imagesReaded/' + file);
             // if(body.type === '.pdf') await fs.promises.copyFile(folder + '/' + body.XMLID + body.type, folder + '/imagePDF/' + body.XMLID + body.type);
             

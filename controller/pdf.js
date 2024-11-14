@@ -8,6 +8,7 @@ const folder = process.env.FOLDER + '/archivo-in';
 
 export const setNewPDF = async( cUploadDate ) => {
     try {
+        console.log('--- Uploading PDFs ---')
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('document_'));
         // console.log('PDFs found: ', files.length )
         // const oneFile = [files[0], files[1]]
@@ -42,8 +43,8 @@ export const setNewPDF = async( cUploadDate ) => {
             body.notes = notes;
             body.uploadDate = cUploadDate;
 
-            // await add(body);
-            await fs.promises.copyFile(folder + '/' + file, folder + '/exported/' + cUploadDate + '/xmls/' + file);
+            await add(body);
+            await fs.promises.rename(folder + '/' + file, folder + '/exported/' + cUploadDate + '/xmls/' + file);
             // await fs.promises.rename(folder + '/' + file, folder + '/pdfsReaded/' + file);
         }
 

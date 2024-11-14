@@ -9,10 +9,9 @@ const folder = process.env.FOLDER + '/archivo-in';
 
 export const setNewNote = async( cUploadDate ) => {
     try {
-        console.log('--- Reading notes ---')
+        console.log('--- Uploading notes ---')
 
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('story_'));
-        console.log(files.length)
         
         for(const file of files) {
             const { story: noteData } = await readerXML(folder + '/' + file);
@@ -38,9 +37,9 @@ export const setNewNote = async( cUploadDate ) => {
             
 
             // console.log(body)
-            // await add(body);
             // await fs.promises.rename(folder + '/' + file, folder + '/notesReaded/' + file);
-            await fs.promises.copyFile(folder + '/' + file, folder + '/exported/' + cUploadDate + '/xmls/' + file);
+            await add(body);
+            await fs.promises.rename(folder + '/' + file, folder + '/exported/' + cUploadDate + '/xmls/' + file);
         }
 
         console.log('- All notes are upadated -')
