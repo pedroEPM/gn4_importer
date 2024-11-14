@@ -12,7 +12,7 @@ router.get('/importerFiles', async (req, res = express.response) => {
         const uploadDate = new Date().toISOString().substring(0,10);
         console.log(`--- ${uploadDate} ---`);
         createMainFolders(folder, uploadDate);
-        await moveThumbs();
+        await moveThumbs(uploadDate);
         // await setNewPDF(uploadDate);
         return res.status(200).json({
             ok: true,
