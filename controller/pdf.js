@@ -41,9 +41,7 @@ export const setNewPDF = async( cUploadDate ) => {
             body.images = images;
             body.notes = notes;
             body.uploadDate = cUploadDate;
-
-            console.log(body)
-
+            
             // await add(body);
             // await fs.promises.rename(folder + '/' + file, folder + '/pdfsReaded/' + file);
         }
