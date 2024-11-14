@@ -8,6 +8,7 @@ import notes from './routes/notes.js'
 import pdfs from './routes/pdfs.js'
 import images from './routes/images.js'
 import advance from './routes/advance.js'
+import importer from './routes/importer.js'
 import publicIP from './utils/getPublicIP.js';
 
 const app = express();
@@ -20,24 +21,11 @@ app.use('/api/note', notes);
 app.use('/api/pdf', pdfs);
 app.use('/api/image', images);
 app.use('/api/advance', advance);
+app.use('/api/importer', importer);
 
 
 console.clear();
 connection();
-
-// import { readXML } from './utils/setFolder.js'
-// readXML()
-// import { setNewImage } from './controller/image.js'
-
-
-// setNewImage()
-// import { setNewPDF } from './controller/pdf.js'
-// setNewPDF()
-// import { setNewNote } from './controller/note.js'
-// setNewNote()
-
-// import { getPDFS } from './queries/pdfs.js'
-// getPDFS(2015)
 
 const port = process.env.PORT ?? 5001;
 app.listen(port, () => {
