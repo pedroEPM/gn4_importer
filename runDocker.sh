@@ -1,17 +1,17 @@
 #!/bin/bash
-echo deteniendo y eliminando la contenedor anterior
+echo Deteniendo y removiendo el contenedor anterior
 sleep 1
-docker stop cc
-docker rm cc
+docker stop dailyImporter
+docker rm dailyImporter
 sleep 1
-echo eliminando imagen anterior 
+echo Eiminando imagen anterior 
 sleep 1
-docker rmi centro-consulta
+docker rmi daily-importer-v2
 sleep 1
-echo creando nueva imagen de centro de consulta ws
+echo Creando nueva imagen del Importador Diario
 sleep 1
-docker build -t centro-consulta .
-echo ejecutando el contenedor centro-consulta
+docker build -t daily-importer-v2 .
+echo Ejecutando el contenedor del Importador Diario
 
-docker run --name cc  -p 3002:3001 -e NODE_ENV=staging -v /home/public/centro-de-consulta-ws:/usr/src/centro-de-consulta-ws/public -v /home/public/files-to-upload:/usr/src/centro-de-consulta-ws/files-to-upload -d centro-consulta
-echo listo.
+docker run --name dailyImporter  -p 3017:3016 -d daily-importer-v2
+echo Hecho
