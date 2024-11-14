@@ -5,7 +5,9 @@ import { setNewPDF } from '../controller/pdf.js'
 import { setNewNote } from '../controller/note.js'
 import { setNewImage } from '../controller/image.js'
 import { moveThumbs } from '../utils/x-thumbs.js'
+import { getPDFByUploadedDate } from '../queries/pdfs.js'
 import { createMainFolders } from '../utils/createMainFolders.js'
+
 const folder = process.env.FOLDER + '/archivo-in';
 
 router.get('/importerFiles', async (req, res = express.response) => {
@@ -21,6 +23,24 @@ router.get('/importerFiles', async (req, res = express.response) => {
         return res.status(200).json({
             ok: true,
             msg: 'This is okey in importerFiles'
+        });
+        
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            msg: 'Error',
+            error,
+        })
+    }
+});
+
+router.port('/pdfs', async (req, res = express.response) => {
+    try {
+        const { uploadDate } = req.body;
+        const allPDFs = await getPDFByUploadedDate(uploadDate)
+        return res.status(200).json({
+            ok: true,
+            msg: allPDFs
         });
         
     } catch (error) {

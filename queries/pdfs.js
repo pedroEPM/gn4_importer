@@ -89,6 +89,18 @@ export const getPDFS = async (littleYear) => {
     }
 }
 
+export const getPDFByUploadedDate = async(date) => {
+    try {
+
+        return await pdf.find({
+            uploadDate: new Date(date)
+        })
+        
+    } catch (error) {
+        console.log('Erro ', error)
+    }
+}
+
 // setTimeout(async() => {
 //     console.log(await getPDFS(2016))
 // }, 3000);
@@ -160,8 +172,6 @@ export const aaa = async () => {
     }
 }
 
-
-
 export const eeeeeeeeeee = async () => {
     try {
         console.log('mmmmmm')
@@ -208,14 +218,6 @@ export const eeeeeeeeeee = async () => {
 }
 
 
-
-
-
-
-setTimeout(() => {
-// const ella = 12120 + 40 + 6809 + 13504 + 480 + 3435 + 87 + 3678 + 73 + 81 + 1822 + 24120 + 3913 + 24820 + 433 + 7266 + 2 + 2827 + 280 + 2743 + 5 + 2303 + 20570 + 39 + 104 + 20498 + 8213 + 5540
-// console.log(ella)
-
-    // aaa()
-    // eeeeeeeeeee()
-}, 3000);
+// setTimeout(() => {
+ 
+// }, 3000);
