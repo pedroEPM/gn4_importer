@@ -9,6 +9,7 @@ const folder = process.env.FOLDER;
 export const setNewPDF = async() => {
     try {
 
+        console.log(folder)
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('document_'));
         console.log('PDFs found: ', files.length )
         // const oneFile = [files[0], files[1]]
