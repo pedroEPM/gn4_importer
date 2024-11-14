@@ -23,6 +23,9 @@ const Imageschema = new mongoose.Schema({
     },
     mime: {
         type: String
+    },
+    uploadDate: {
+        type: Date,
     }
 });
 

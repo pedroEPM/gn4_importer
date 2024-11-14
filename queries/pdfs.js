@@ -16,6 +16,7 @@ export const add = async (body) => {
             publication: body.publication,
             images: body.images,
             notes: body.notes,
+            uploadDate: body.cUploadDate
         });
 
         await newPDF.save()

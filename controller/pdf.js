@@ -6,10 +6,8 @@ import { readerXML } from '../utils/readXML.js'
 const folder = process.env.FOLDER + '/archivo-in';
 // const folder = process.env.FOLDER + '/pdfs';
 
-export const setNewPDF = async() => {
+export const setNewPDF = async( cUploadDate ) => {
     try {
-
-        console.log(folder)
         const files = fs.readdirSync(folder).filter(element => element.trim().toLocaleLowerCase().includes('document_'));
         console.log('PDFs found: ', files.length )
         // const oneFile = [files[0], files[1]]
@@ -40,10 +38,9 @@ export const setNewPDF = async() => {
                 });
             }
 
-            console.log(body)
-
             body.images = images;
             body.notes = notes;
+            body.uploadDate = cUploadDate;
 
             // console.log(body)
 

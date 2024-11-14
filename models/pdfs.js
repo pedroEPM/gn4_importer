@@ -41,6 +41,9 @@ const PDFSchema = new mongoose.Schema({
     notes: {
         type: [Number],
         default: []
+    },
+    uploadDate: {
+        type: Date,
     }
 });
 

@@ -32,6 +32,9 @@ const Noteschema = new mongoose.Schema({
     newBody: {
         type: String,
         default: null
+    },
+    uploadDate: {
+        type: Date,
     }
 });
 
