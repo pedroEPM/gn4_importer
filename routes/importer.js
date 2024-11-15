@@ -34,7 +34,7 @@ router.get('/importerFiles', async (req, res = express.response) => {
     }
 });
 
-router.port('/pdfs', async (req, res = express.response) => {
+router.post('/pdfs', async (req, res = express.response) => {
     try {
         const { uploadDate } = req.body;
         const allPDFs = await getPDFByUploadedDate(uploadDate)
