@@ -94,7 +94,7 @@ export const getPDFByUploadedDate = async(date) => {
 
         return await pdf.find({
             uploadDate: new Date(date)
-        }).limit(3)
+        }).skip(1).limit(2)
         
     } catch (error) {
         console.log('Erro ', error)
