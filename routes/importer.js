@@ -13,7 +13,7 @@ const folder = process.env.FOLDER + '/archivo-in';
 router.get('/importerFiles', async (req, res = express.response) => {
     try {
 
-        const uploadDate = new Date("2024-11-14").toISOString().substring(0,10);
+        const uploadDate = new Date().toISOString().substring(0,10);
         // const uploadDate = new Date().toISOString().substring(0,10);
         console.log(`--- ${uploadDate} ---`);
         createMainFolders(folder, uploadDate);
