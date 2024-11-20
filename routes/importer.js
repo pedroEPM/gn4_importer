@@ -39,6 +39,7 @@ router.post('/pdfs', async (req, res = express.response) => {
         const { uploadDate } = req.body;
         console.log('--- Getting PDFs by uploadDate: ' + uploadDate + ' ---')
         const allPDFs = await getPDFByUploadedDate(uploadDate)
+        console.log('PDFs Found: ', allPDFs.length)
         return res.status(200).json({
             ok: true,
             msg: allPDFs
