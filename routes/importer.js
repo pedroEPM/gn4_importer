@@ -13,13 +13,13 @@ const folder = process.env.FOLDER + '/archivo-in';
 router.get('/importerFiles', async (req, res = express.response) => {
     try {
 
-        const uploadDate = new Date("2024-11-19").toISOString().substring(0,10);
+        const uploadDate = new Date().toISOString().substring(0,10);
         console.log(`--- ${uploadDate} ---`);
         createMainFolders(folder, uploadDate);
-        await moveThumbs(uploadDate);
-        await setNewPDF(uploadDate);
-        await setNewNote(uploadDate)
-        await setNewImage(uploadDate)
+        // await moveThumbs(uploadDate);
+        // await setNewPDF(uploadDate);
+        // await setNewNote(uploadDate)
+        // await setNewImage(uploadDate)
         return res.status(200).json({
             ok: true,
             msg: 'This is okey in importerFiles'
