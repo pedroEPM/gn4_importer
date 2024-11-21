@@ -93,7 +93,11 @@ export const getPDFByUploadedDate = async(date) => {
     try {
 
         return await pdf.find({
-            uploadDate: new Date(date)
+            uploadDate: new Date(date),
+            publicationDate: {
+                $gte: new Date("2024-11-21"),
+                $lte: new Date("2024-11-21"),
+            }
         })
         
     } catch (error) {
