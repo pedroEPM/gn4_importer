@@ -3,7 +3,7 @@ import fs from 'fs';
 export const createMainFolders = (folder, cUpdateDate) => {
     try {
         const rootDayFolder = folder + '/exported/' + cUpdateDate; 
-        const foldersPerFileType = ['xmls', 'notes', 'pdfs', 'images', 'x-thumbs']
+        const foldersPerFileType = ['xmls', 'allFiles', 'x-thumbs']
         
         if (!fs.existsSync(folder + '/exported/')) fs.mkdirSync(folder + '/exported/')
 
