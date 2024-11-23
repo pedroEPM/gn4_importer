@@ -7,6 +7,7 @@ import { setNewImage } from '../controller/image.js'
 import { moveThumbs } from '../utils/x-thumbs.js'
 import { getPDFByUploadedDate } from '../queries/pdfs.js'
 import { createMainFolders } from '../utils/createMainFolders.js'
+import { setHTMLByXML } from '../utils/convertXMLToHTML.js'
 
 const folder = process.env.FOLDER + '/archivo-in';
 
@@ -19,8 +20,9 @@ router.get('/importerFiles', async (req, res = express.response) => {
         createMainFolders(folder, uploadDate);
         await moveThumbs(uploadDate);
         await setNewPDF(uploadDate);
-        await setNewNote(uploadDate)
-        await setNewImage(uploadDate)
+        await setNewNote(uploadDate);
+        await setNewImage(uploadDate);
+        await setHTMLByXML(uploadDate);
         return res.status(200).json({
             ok: true,
             msg: 'This is okey in importerFiles'
