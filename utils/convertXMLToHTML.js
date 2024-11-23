@@ -5,7 +5,10 @@ import { Types } from 'mongoose';
 export const setHTMLByXML = async (uploadDate) => {
     try {
         const allNotes = await note.find({
-            uploadDate: uploadDate
+            uploadDate: {
+                $gte: new Date(uploadDate),
+                $lte: new Date(uploadDate),
+            }
         })
 
         console.log(allNotes.length)
