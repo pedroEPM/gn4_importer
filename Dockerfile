@@ -1,13 +1,18 @@
 FROM node:20-bullseye
 
+RUN useradd -m -u 1001 axon
+
 WORKDIR /c-gn4-importer
 
 COPY . .
+RUN chown -R axon:axon /c-centro-de-consulta
 
 # RUN npm install --no-cache --verbose
 RUN npm install
 
 COPY . .
+
+USER axon
 
 EXPOSE 3016
 
