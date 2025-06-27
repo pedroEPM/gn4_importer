@@ -10,6 +10,7 @@ import images from './routes/images.js'
 import advance from './routes/advance.js'
 import importer from './routes/importer.js'
 import publicIP from './utils/getPublicIP.js';
+import { findMissingYears, getExistingYears, getYearlyStats } from './queries/years.js';
 
 const app = express();
 
@@ -22,7 +23,6 @@ app.use('/api/pdf', pdfs);
 app.use('/api/image', images);
 app.use('/api/advance', advance);
 app.use('/api/importer', importer);
-
 
 console.clear();
 connection();
