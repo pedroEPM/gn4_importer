@@ -15,7 +15,7 @@ export const getExistingYears = async () => {
             {
                 $sort: { "_id": 1 }
             }
-        ]);
+        ]); 
 
         return years.map(year => year._id);
     } catch (error) {
